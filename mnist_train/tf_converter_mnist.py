@@ -10,12 +10,11 @@ from tensorflow.python.framework import graph_io
 
 from tensorflow.examples.tutorials.mnist import input_data
 mnist = input_data.read_data_sets("MNIST_data/", one_hot=True)
-# NOTE: The batch_size has to be 100 as specified by OCaml
 batch_size = 100
 
 filename = 'tf_convert_mnist'
 with open(filename + '.pbtxt', 'r') as f:
-  	metagraph_def = tf.MetaGraphDef()
+  	metagraph_def = tf.compat.v1.MetaGraphDef()
   	file_content = f.read()
   	text_format.Merge(file_content,metagraph_def)
   	graph_io.write_graph(metagraph_def, 
@@ -26,16 +25,16 @@ with open(filename + '.pbtxt', 'r') as f:
 input_data = np.random.rand(100, 28, 28, 1)
 
 with tf.Graph().as_default():
-    config = tf.ConfigProto()
+    config = tf.compat.v1.ConfigProto()
     config.gpu_options.allow_growth = True
 
-    sess = tf.Session(config=config)
-    saver = tf.train.import_meta_graph(filename+'.pb')
-    graph = tf.get_default_graph()
+    sess = tf.compat.v1.Session(config=config)
+    saver = tf.compat.v1.train.import_meta_graph(filename+'.pb')
+    graph = tf.compat.v1.get_default_graph()
 
     x = graph.get_tensor_by_name('x:0')
-    y = tf.placeholder("float", [None, 10])
-    result = tf.get_collection("result")[0]
+    y = tf.compat.v1.placeholder("float", [None, 10])
+    result = tf.compat.v1.get_collection("result")[0]
 
     cross_entropy = tf.reduce_mean(
         tf.nn.softmax_cross_entropy_with_logits_v2(
@@ -50,7 +49,7 @@ with tf.Graph().as_default():
     init = tf.global_variables_initializer()
     sess.run(init)
 
-    for i in range(2000):
+    for i in range(200):
         batch_x, batch_y = mnist.train.next_batch(batch_size)
         batch_x = np.reshape(batch_x, (-1,28,28,1))
         sess.run(train_step, feed_dict={x: batch_x, y: batch_y})
@@ -59,3 +58,5 @@ with tf.Graph().as_default():
             minibatch_loss, acc = sess.run([cross_entropy, accuracy], feed_dict={x: batch_x, y: batch_y})
             print("Loss:%s\n" % str(minibatch_loss))
             print("Accuracy:%s\n" % str(acc))
+
+    saver.save(sess, "owl_model.ckpt")

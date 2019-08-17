@@ -1,0 +1,86 @@
+HloModule cluster_1__XlaCompiledKernel_true__XlaNumConstantArgs_5__XlaNumResourceArgs_0_.76
+
+%max_F32.25 (lhs.26: f32[], rhs.27: f32[]) -> f32[] {
+  %lhs.26 = f32[] parameter(0)
+  %rhs.27 = f32[] parameter(1)
+  ROOT %maximum.28 = f32[] maximum(f32[] %lhs.26, f32[] %rhs.27)
+}
+
+%owlnode52-reduction.49 (x.50: f32[], y.51: f32[]) -> f32[] {
+  %x.50 = f32[] parameter(0)
+  %y.51 = f32[] parameter(1)
+  ROOT %maximum.52 = f32[] maximum(f32[] %x.50, f32[] %y.51)
+}
+
+%owlnode57-reduction.63 (x.64: f32[], y.65: f32[]) -> f32[] {
+  %x.64 = f32[] parameter(0)
+  %y.65 = f32[] parameter(1)
+  ROOT %add.66 = f32[] add(f32[] %x.64, f32[] %y.65)
+}
+
+ENTRY %cluster_1__XlaCompiledKernel_true__XlaNumConstantArgs_5__XlaNumResourceArgs_0_.76 (arg0.1: f32[32], arg1.2: f32[5,5,1,32], arg2.3: f32[6272,1024], arg3.4: f32[1,1024], arg4.5: f32[1024,10], arg5.6: f32[1,10], arg6.7: f32[100,28,28,1]) -> f32[100,10] {
+  %arg5.6 = f32[1,10]{1,0} parameter(5), parameter_replication={false}, metadata={op_name="XLA_Args"}
+  %reshape.13 = f32[1,10]{1,0} reshape(f32[1,10]{1,0} %arg5.6)
+  %reshape.43 = f32[10]{0} reshape(f32[1,10]{1,0} %reshape.13), metadata={op_type="Add" op_name="owlnode50"}
+  %broadcast.44 = f32[100,10]{1,0} broadcast(f32[10]{0} %reshape.43), dimensions={1}, metadata={op_type="Add" op_name="owlnode50"}
+  %constant.39 = f32[] constant(0), metadata={op_type="Relu" op_name="owlnode44"}
+  %broadcast.40 = f32[100,1024]{1,0} broadcast(f32[] %constant.39), dimensions={}, metadata={op_type="Relu" op_name="owlnode44"}
+  %arg3.4 = f32[1,1024]{1,0} parameter(3), parameter_replication={false}, metadata={op_name="XLA_Args"}
+  %reshape.11 = f32[1,1024]{1,0} reshape(f32[1,1024]{1,0} %arg3.4)
+  %reshape.36 = f32[1024]{0} reshape(f32[1,1024]{1,0} %reshape.11), metadata={op_type="Add" op_name="owlnode42"}
+  %broadcast.37 = f32[100,1024]{1,0} broadcast(f32[1024]{0} %reshape.36), dimensions={1}, metadata={op_type="Add" op_name="owlnode42"}
+  %constant.30 = f32[] constant(0), metadata={op_type="Relu" op_name="owlnode32"}
+  %broadcast.31 = f32[100,32,14,14]{3,2,1,0} broadcast(f32[] %constant.30), dimensions={}, metadata={op_type="Relu" op_name="owlnode32"}
+  %constant.15 = f32[] constant(0.00390625), metadata={op_type="Mul" op_name="owlnode27"}
+  %broadcast.16 = f32[100,28,28,1]{3,2,1,0} broadcast(f32[] %constant.15), dimensions={}, metadata={op_type="Mul" op_name="owlnode27"}
+  %arg6.7 = f32[100,28,28,1]{3,2,1,0} parameter(6), parameter_replication={false}, metadata={op_name="XLA_Args"}
+  %reshape.14 = f32[100,28,28,1]{3,2,1,0} reshape(f32[100,28,28,1]{3,2,1,0} %arg6.7)
+  %multiply.17 = f32[100,28,28,1]{3,2,1,0} multiply(f32[100,28,28,1]{3,2,1,0} %broadcast.16, f32[100,28,28,1]{3,2,1,0} %reshape.14), metadata={op_type="Mul" op_name="owlnode27"}
+  %transpose.19 = f32[100,1,28,28]{1,3,2,0} transpose(f32[100,28,28,1]{3,2,1,0} %multiply.17), dimensions={0,3,1,2}, metadata={op_type="Transpose" op_name="owlnode28-0-TransposeNHWCToNCHW-LayoutOptimizer"}
+  %arg1.2 = f32[5,5,1,32]{3,2,1,0} parameter(1), parameter_replication={false}, metadata={op_name="XLA_Args"}
+  %reshape.9 = f32[5,5,1,32]{3,2,1,0} reshape(f32[5,5,1,32]{3,2,1,0} %arg1.2)
+  %convolution.20 = f32[100,32,28,28]{3,2,1,0} convolution(f32[100,1,28,28]{1,3,2,0} %transpose.19, f32[5,5,1,32]{3,2,1,0} %reshape.9), window={size=5x5 pad=2_2x2_2}, dim_labels=bf01_01io->bf01, metadata={op_type="Conv2D" op_name="owlnode28"}
+  %arg0.1 = f32[32]{0} parameter(0), parameter_replication={false}, metadata={op_name="XLA_Args"}
+  %reshape.8 = f32[32]{0} reshape(f32[32]{0} %arg0.1)
+  %reshape.18 = f32[1,32,1,1]{3,2,1,0} reshape(f32[32]{0} %reshape.8), metadata={op_type="Reshape" op_name="owlnode30-0-ReshapeNHWCToNCHW-LayoutOptimizer"}
+  %reshape.21 = f32[32]{0} reshape(f32[1,32,1,1]{3,2,1,0} %reshape.18), metadata={op_type="Add" op_name="owlnode30"}
+  %broadcast.22 = f32[100,32,28,28]{3,2,1,0} broadcast(f32[32]{0} %reshape.21), dimensions={1}, metadata={op_type="Add" op_name="owlnode30"}
+  %add.23 = f32[100,32,28,28]{3,2,1,0} add(f32[100,32,28,28]{3,2,1,0} %convolution.20, f32[100,32,28,28]{3,2,1,0} %broadcast.22), metadata={op_type="Add" op_name="owlnode30"}
+  %constant.24 = f32[] constant(-inf), metadata={op_type="MaxPool" op_name="owlnode34"}
+  %reduce-window.29 = f32[100,32,14,14]{3,2,1,0} reduce-window(f32[100,32,28,28]{3,2,1,0} %add.23, f32[] %constant.24), window={size=1x1x2x2 stride=1x1x2x2}, to_apply=%max_F32.25, metadata={op_type="MaxPool" op_name="owlnode34"}
+  %maximum.32 = f32[100,32,14,14]{3,2,1,0} maximum(f32[100,32,14,14]{3,2,1,0} %broadcast.31, f32[100,32,14,14]{3,2,1,0} %reduce-window.29), metadata={op_type="Relu" op_name="owlnode32"}
+  %transpose.33 = f32[100,14,14,32]{2,1,3,0} transpose(f32[100,32,14,14]{3,2,1,0} %maximum.32), dimensions={0,2,3,1}, metadata={op_type="Transpose" op_name="owlnode32-0-0-TransposeNCHWToNHWC-LayoutOptimizer"}
+  %reshape.34 = f32[100,6272]{1,0} reshape(f32[100,14,14,32]{2,1,3,0} %transpose.33), metadata={op_type="Reshape" op_name="owlnode36"}
+  %arg2.3 = f32[6272,1024]{1,0} parameter(2), parameter_replication={false}, metadata={op_name="XLA_Args"}
+  %reshape.10 = f32[6272,1024]{1,0} reshape(f32[6272,1024]{1,0} %arg2.3)
+  %dot.35 = f32[100,1024]{1,0} dot(f32[100,6272]{1,0} %reshape.34, f32[6272,1024]{1,0} %reshape.10), lhs_contracting_dims={1}, rhs_contracting_dims={0}, metadata={op_type="MatMul" op_name="owlnode40"}
+  %add.38 = f32[100,1024]{1,0} add(f32[100,1024]{1,0} %broadcast.37, f32[100,1024]{1,0} %dot.35), metadata={op_type="Add" op_name="owlnode42"}
+  %maximum.41 = f32[100,1024]{1,0} maximum(f32[100,1024]{1,0} %broadcast.40, f32[100,1024]{1,0} %add.38), metadata={op_type="Relu" op_name="owlnode44"}
+  %arg4.5 = f32[1024,10]{1,0} parameter(4), parameter_replication={false}, metadata={op_name="XLA_Args"}
+  %reshape.12 = f32[1024,10]{1,0} reshape(f32[1024,10]{1,0} %arg4.5)
+  %dot.42 = f32[100,10]{1,0} dot(f32[100,1024]{1,0} %maximum.41, f32[1024,10]{1,0} %reshape.12), lhs_contracting_dims={1}, rhs_contracting_dims={0}, metadata={op_type="MatMul" op_name="owlnode48"}
+  %add.45 = f32[100,10]{1,0} add(f32[100,10]{1,0} %broadcast.44, f32[100,10]{1,0} %dot.42), metadata={op_type="Add" op_name="owlnode50"}
+  %convert.46 = f32[100,10]{1,0} convert(f32[100,10]{1,0} %add.45), metadata={op_type="Max" op_name="owlnode52"}
+  %constant.47 = f32[] constant(-inf), metadata={op_type="Max" op_name="owlnode52"}
+  %convert.48 = f32[] convert(f32[] %constant.47), metadata={op_type="Max" op_name="owlnode52"}
+  %reduce.53 = f32[100]{0} reduce(f32[100,10]{1,0} %convert.46, f32[] %convert.48), dimensions={1}, to_apply=%owlnode52-reduction.49, metadata={op_type="Max" op_name="owlnode52"}
+  %convert.54 = f32[100]{0} convert(f32[100]{0} %reduce.53), metadata={op_type="Max" op_name="owlnode52"}
+  %reshape.55 = f32[100,1]{1,0} reshape(f32[100]{0} %convert.54), metadata={op_type="Max" op_name="owlnode52"}
+  %reshape.56 = f32[100]{0} reshape(f32[100,1]{1,0} %reshape.55), metadata={op_type="Sub" op_name="owlnode53"}
+  %broadcast.57 = f32[100,10]{1,0} broadcast(f32[100]{0} %reshape.56), dimensions={0}, metadata={op_type="Sub" op_name="owlnode53"}
+  %subtract.58 = f32[100,10]{1,0} subtract(f32[100,10]{1,0} %add.45, f32[100,10]{1,0} %broadcast.57), metadata={op_type="Sub" op_name="owlnode53"}
+  %exponential.59 = f32[100,10]{1,0} exponential(f32[100,10]{1,0} %subtract.58), metadata={op_type="Exp" op_name="owlnode55"}
+  %convert.60 = f32[100,10]{1,0} convert(f32[100,10]{1,0} %exponential.59), metadata={op_type="Sum" op_name="owlnode57"}
+  %constant.61 = f32[] constant(0), metadata={op_type="Sum" op_name="owlnode57"}
+  %convert.62 = f32[] convert(f32[] %constant.61), metadata={op_type="Sum" op_name="owlnode57"}
+  %reduce.67 = f32[100]{0} reduce(f32[100,10]{1,0} %convert.60, f32[] %convert.62), dimensions={1}, to_apply=%owlnode57-reduction.63, metadata={op_type="Sum" op_name="owlnode57"}
+  %convert.68 = f32[100]{0} convert(f32[100]{0} %reduce.67), metadata={op_type="Sum" op_name="owlnode57"}
+  %reshape.69 = f32[100,1]{1,0} reshape(f32[100]{0} %convert.68), metadata={op_type="Sum" op_name="owlnode57"}
+  %reshape.70 = f32[100]{0} reshape(f32[100,1]{1,0} %reshape.69), metadata={op_type="Div" op_name="owlnode59"}
+  %broadcast.71 = f32[100,10]{1,0} broadcast(f32[100]{0} %reshape.70), dimensions={0}, metadata={op_type="Div" op_name="owlnode59"}
+  %divide.72 = f32[100,10]{1,0} divide(f32[100,10]{1,0} %exponential.59, f32[100,10]{1,0} %broadcast.71), metadata={op_type="Div" op_name="owlnode59"}
+  %reshape.73 = f32[100,10]{1,0} reshape(f32[100,10]{1,0} %divide.72), metadata={op_name="XLA_Retvals"}
+  %tuple.74 = (f32[100,10]{1,0}) tuple(f32[100,10]{1,0} %reshape.73), metadata={op_name="XLA_Retvals"}
+  ROOT %get-tuple-element.75 = f32[100,10]{1,0} get-tuple-element((f32[100,10]{1,0}) %tuple.74), index=0, metadata={op_name="XLA_Retvals"}
+}
+

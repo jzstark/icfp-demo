@@ -1,0 +1,33 @@
+HloModule cluster_0__XlaCompiledKernel_true__XlaNumConstantArgs_0__XlaNumResourceArgs_0_.29
+
+ENTRY %cluster_0__XlaCompiledKernel_true__XlaNumConstantArgs_0__XlaNumResourceArgs_0_.29 (arg0.1: f32[5,5,1,32], arg1.2: f32[1024,10], arg2.3: f32[6272,1024]) -> (f32[5,5,1,32], f32[1024,10], f32[6272,1024]) {
+  %constant.22 = f32[] constant(-0.08528), metadata={op_type="Add" op_name="owlnode9/random_uniform/add"}
+  %broadcast.23 = f32[5,5,1,32]{3,2,1,0} broadcast(f32[] %constant.22), dimensions={}, metadata={op_type="Add" op_name="owlnode9/random_uniform/add"}
+  %arg0.1 = f32[5,5,1,32]{3,2,1,0} parameter(0), parameter_replication={false}, metadata={op_name="XLA_Args"}
+  %reshape.4 = f32[5,5,1,32]{3,2,1,0} reshape(f32[5,5,1,32]{3,2,1,0} %arg0.1)
+  %constant.19 = f32[] constant(0.17056), metadata={op_type="Mul" op_name="owlnode9/random_uniform/mul"}
+  %broadcast.20 = f32[5,5,1,32]{3,2,1,0} broadcast(f32[] %constant.19), dimensions={}, metadata={op_type="Mul" op_name="owlnode9/random_uniform/mul"}
+  %multiply.21 = f32[5,5,1,32]{3,2,1,0} multiply(f32[5,5,1,32]{3,2,1,0} %reshape.4, f32[5,5,1,32]{3,2,1,0} %broadcast.20), metadata={op_type="Mul" op_name="owlnode9/random_uniform/mul"}
+  %add.24 = f32[5,5,1,32]{3,2,1,0} add(f32[5,5,1,32]{3,2,1,0} %broadcast.23, f32[5,5,1,32]{3,2,1,0} %multiply.21), metadata={op_type="Add" op_name="owlnode9/random_uniform/add"}
+  %reshape.25 = f32[5,5,1,32]{3,2,1,0} reshape(f32[5,5,1,32]{3,2,1,0} %add.24), metadata={op_name="XLA_Retvals"}
+  %arg1.2 = f32[1024,10]{1,0} parameter(1), parameter_replication={false}, metadata={op_name="XLA_Args"}
+  %reshape.5 = f32[1024,10]{1,0} reshape(f32[1024,10]{1,0} %arg1.2)
+  %constant.13 = f32[] constant(0.17056), metadata={op_type="Mul" op_name="owlnode17/random_uniform/mul"}
+  %broadcast.14 = f32[1024,10]{1,0} broadcast(f32[] %constant.13), dimensions={}, metadata={op_type="Mul" op_name="owlnode17/random_uniform/mul"}
+  %multiply.15 = f32[1024,10]{1,0} multiply(f32[1024,10]{1,0} %reshape.5, f32[1024,10]{1,0} %broadcast.14), metadata={op_type="Mul" op_name="owlnode17/random_uniform/mul"}
+  %constant.16 = f32[] constant(-0.08528), metadata={op_type="Add" op_name="owlnode17/random_uniform/add"}
+  %broadcast.17 = f32[1024,10]{1,0} broadcast(f32[] %constant.16), dimensions={}, metadata={op_type="Add" op_name="owlnode17/random_uniform/add"}
+  %add.18 = f32[1024,10]{1,0} add(f32[1024,10]{1,0} %multiply.15, f32[1024,10]{1,0} %broadcast.17), metadata={op_type="Add" op_name="owlnode17/random_uniform/add"}
+  %reshape.26 = f32[1024,10]{1,0} reshape(f32[1024,10]{1,0} %add.18), metadata={op_name="XLA_Retvals"}
+  %arg2.3 = f32[6272,1024]{1,0} parameter(2), parameter_replication={false}, metadata={op_name="XLA_Args"}
+  %reshape.6 = f32[6272,1024]{1,0} reshape(f32[6272,1024]{1,0} %arg2.3)
+  %constant.7 = f32[] constant(0.17056), metadata={op_type="Mul" op_name="owlnode13/random_uniform/mul"}
+  %broadcast.8 = f32[6272,1024]{1,0} broadcast(f32[] %constant.7), dimensions={}, metadata={op_type="Mul" op_name="owlnode13/random_uniform/mul"}
+  %multiply.9 = f32[6272,1024]{1,0} multiply(f32[6272,1024]{1,0} %reshape.6, f32[6272,1024]{1,0} %broadcast.8), metadata={op_type="Mul" op_name="owlnode13/random_uniform/mul"}
+  %constant.10 = f32[] constant(-0.08528), metadata={op_type="Add" op_name="owlnode13/random_uniform/add"}
+  %broadcast.11 = f32[6272,1024]{1,0} broadcast(f32[] %constant.10), dimensions={}, metadata={op_type="Add" op_name="owlnode13/random_uniform/add"}
+  %add.12 = f32[6272,1024]{1,0} add(f32[6272,1024]{1,0} %multiply.9, f32[6272,1024]{1,0} %broadcast.11), metadata={op_type="Add" op_name="owlnode13/random_uniform/add"}
+  %reshape.27 = f32[6272,1024]{1,0} reshape(f32[6272,1024]{1,0} %add.12), metadata={op_name="XLA_Retvals"}
+  ROOT %tuple.28 = (f32[5,5,1,32]{3,2,1,0}, f32[1024,10]{1,0}, f32[6272,1024]{1,0}) tuple(f32[5,5,1,32]{3,2,1,0} %reshape.25, f32[1024,10]{1,0} %reshape.26, f32[6272,1024]{1,0} %reshape.27), metadata={op_name="XLA_Retvals"}
+}
+

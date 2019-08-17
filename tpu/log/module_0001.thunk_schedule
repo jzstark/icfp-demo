@@ -1,0 +1,15 @@
+Total order:
+kKernel     	%fusion.5 = f32[100,1,28,28]{3,2,1,0} fusion(f32[100,28,28,1]{3,2,1,0} %arg6.7), kind=kLoop, calls=%fused_computation.5, metadata={op_type="Transpose" op_name="owlnode28-0-TransposeNHWCToNCHW-LayoutOptimizer"}
+kKernel     	%copy.4 = f32[5,5,1,32]{1,0,2,3} copy(f32[5,5,1,32]{3,2,1,0} %arg1.2), metadata={op_name="XLA_Args"}
+kConvolution	%custom-call.1 = (f32[100,32,28,28]{3,2,1,0}, u8[4712]{0}) custom-call(f32[100,1,28,28]{3,2,1,0} %fusion.5, f32[5,5,1,32]{1,0,2,3} %copy.4), window={size=5x5 pad=2_2x2_2}, dim_labels=bf01_01io->bf01, custom_call_target="__cudnn$convForward", metadata={op_type="Conv2D" op_name="owlnode28"}, backend_config="{\"algorithm\":\"1\",\"convResultScale\":1}"
+kKernel     	%fusion.4 = f32[100,6272]{1,0} fusion(f32[100,32,28,28]{3,2,1,0} %get-tuple-element.1, f32[32]{0} %arg0.1), kind=kLoop, calls=%fused_computation.4, metadata={op_type="Reshape" op_name="owlnode36"}
+kGemm       	%dot.35 = f32[100,1024]{1,0} dot(f32[100,6272]{1,0} %fusion.4, f32[6272,1024]{1,0} %arg2.3), lhs_contracting_dims={1}, rhs_contracting_dims={0}, metadata={op_type="MatMul" op_name="owlnode40"}
+kKernel     	%fusion.3 = f32[100,1024]{1,0} fusion(f32[100,1024]{1,0} %dot.35, f32[1,1024]{1,0} %arg3.4), kind=kLoop, calls=%fused_computation.3, metadata={op_type="Relu" op_name="owlnode44"}
+kKernel     	%fusion.6 = f32[100,10]{1,0} fusion(f32[1,10]{1,0} %arg5.6), kind=kLoop, calls=%fused_computation.6, metadata={op_type="Add" op_name="owlnode50"}
+kGemm       	%fusion.2 = f32[100,10]{1,0} fusion(f32[100,10]{1,0} %fusion.6, f32[100,1024]{1,0} %fusion.3, f32[1024,10]{1,0} %arg4.5), kind=kOutput, calls=%fused_computation.2, metadata={op_type="Add" op_name="owlnode50"}
+kKernel     	%reduce.53 = f32[100]{0} reduce(f32[100,10]{1,0} %fusion.2, f32[] %constant_24), dimensions={1}, to_apply=%owlnode52-reduction.49, metadata={op_type="Max" op_name="owlnode52"}
+kKernel     	%fusion.1 = f32[100,10]{1,0} fusion(f32[100,10]{1,0} %fusion.2, f32[100]{0} %reduce.53), kind=kLoop, calls=%fused_computation.1, metadata={op_type="Exp" op_name="owlnode55"}
+kKernel     	%reduce.67 = f32[100]{0} reduce(f32[100,10]{1,0} %fusion.1, f32[] %constant_30), dimensions={1}, to_apply=%owlnode57-reduction.63, metadata={op_type="Sum" op_name="owlnode57"}
+kKernel     	%fusion = f32[100,10]{1,0} fusion(f32[100,10]{1,0} %fusion.1, f32[100]{0} %reduce.67), kind=kLoop, calls=%fused_computation, metadata={op_type="Div" op_name="owlnode59"}
+
+Dependencies:

@@ -104,3 +104,4 @@ venv.bak/
 .mypy_cache/
 
 *.pb
+mnist_train/MNIST_data/
