@@ -107,3 +107,4 @@ venv.bak/
 data/
 reference/
 
+.DS_Store

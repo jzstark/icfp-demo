@@ -1,0 +1,3618 @@
+meta_info_def {
+stripped_op_list{
+op {
+name: "Div"
+input_arg{
+name: "x"
+type_attr: "T"
+}
+input_arg{
+name: "y"
+type_attr: "T"
+}
+output_arg{
+name: "z"
+type_attr: "T"
+}
+attr {
+name: "T"
+type: "type"
+}
+}
+
+op {
+name: "Exp"
+input_arg{
+name: "x"
+type_attr: "T"
+}
+output_arg{
+name: "y"
+type_attr: "T"
+}
+attr {
+name: "T"
+type: "type"
+}
+}
+
+op {
+name: "Sub"
+input_arg{
+name: "x"
+type_attr: "T"
+}
+input_arg{
+name: "y"
+type_attr: "T"
+}
+output_arg{
+name: "z"
+type_attr: "T"
+}
+attr {
+name: "T"
+type: "type"
+}
+}
+
+op {
+name: "Add"
+input_arg{
+name: "x"
+type_attr: "T"
+}
+input_arg{
+name: "y"
+type_attr: "T"
+}
+output_arg{
+name: "z"
+type_attr: "T"
+}
+attr {
+name: "T"
+type: "type"
+}
+}
+
+op {
+name: "MatMul"
+input_arg{
+name: "a"
+type_attr: "T"
+}
+input_arg{
+name: "b"
+type_attr: "T"
+}
+output_arg{
+name: "product"
+type_attr: "T"
+}
+attr {
+name: "T"
+type: "type"
+}
+attr {
+name: "transpose_a"
+type: "bool"
+}
+attr {
+name: "transpose_b"
+type: "bool"
+}
+}
+
+op {
+name: "Relu"
+input_arg{
+name: "features"
+type_attr: "T"
+}
+output_arg{
+name: "activations"
+type_attr: "T"
+}
+attr {
+name: "T"
+type: "type"
+}
+}
+
+op {
+name: "Reshape"
+input_arg{
+name: "tensor"
+type_attr: "T"
+}
+input_arg{
+name: "shape"
+type_attr: "Tshape"
+}
+output_arg{
+name: "output"
+type_attr: "T"
+}
+attr {
+name: "T"
+type: "type"
+}
+attr {
+name: "Tshape"
+type: "type"
+}
+}
+
+op {
+name: "Const"
+output_arg{
+name: "output"
+type_attr: "dtype"
+}
+attr {
+name: "value"
+type: "tensor"
+}
+attr {
+name: "dtype"
+type: "type"
+}
+}
+
+op {
+name: "MaxPool"
+input_arg{
+name: "input"
+type_attr: "T"
+}
+output_arg{
+name: "output"
+type_attr: "T"
+}
+attr {
+name: "T"
+type: "type"
+}
+attr {
+name: "strides"
+type: "list(int)"
+}
+attr {
+name: "ksize"
+type: "list(int)"
+}
+attr {
+name: "padding"
+type: "string"
+}
+attr {
+name: "data_format"
+type: "string"
+}
+}
+
+op {
+name: "Conv2D"
+input_arg{
+name: "input"
+type_attr: "T"
+}
+input_arg{
+name: "filter"
+type_attr: "T"
+}
+output_arg{
+name: "output"
+type_attr: "T"
+}
+attr {
+name: "T"
+type: "type"
+}
+attr {
+name: "strides"
+type: "list(int)"
+}
+attr {
+name: "padding"
+type: "string"
+}
+attr {
+name: "dilations"
+type: "list(int)"
+}
+attr {
+name: "data_format"
+type: "string"
+}
+}
+
+op {
+name: "Placeholder"
+output_arg{
+name: "type"
+type_attr: "dtype"
+}
+attr {
+name: "dtype"
+type: "type"
+}
+attr {
+name: "shape"
+type: "shape"
+}
+}
+
+op {
+name: "VariableV2"
+output_arg{
+name: "ref"
+type_attr: "dtype"
+is_ref: true
+}
+attr {
+name: "shape"
+type: "shape"
+}
+attr {
+name: "dtype"
+type: "type"
+}
+attr {
+name: "container"
+type: "string"
+}
+attr {
+name: "shared_name"
+type: "string"
+}
+}
+
+op {
+name: "Identity"
+input_arg{
+name: "input"
+type_attr: "T"
+}
+output_arg{
+name: "output"
+type_attr: "T"
+}
+attr {
+name: "T"
+type: "type"
+}
+}
+
+op {
+name: "Assign"
+input_arg{
+name: "ref"
+type_attr: "T"
+is_ref: true
+}
+input_arg{
+name: "value"
+type_attr: "T"
+}
+output_arg{
+name: "output_ref"
+type_attr: "T"
+is_ref: true
+}
+attr {
+name: "T"
+type: "type"
+}
+attr {
+name: "validate_shape"
+type: "bool"
+}
+attr {
+name: "use_locking"
+type: "bool"
+}
+}
+
+op {
+name: "Mul"
+input_arg{
+name: "x"
+type_attr: "T"
+}
+input_arg{
+name: "y"
+type_attr: "T"
+}
+output_arg{
+name: "z"
+type_attr: "T"
+}
+attr {
+name: "T"
+type: "type"
+}
+}
+
+op {
+name: "RandomUniform"
+input_arg{
+name: "shape"
+type_attr: "T"
+}
+output_arg{
+name: "output"
+type_attr: "dtype"
+}
+attr {
+name: "seed"
+type: "int"
+}
+attr {
+name: "seed2"
+type: "int"
+}
+attr {
+name: "dtype"
+type: "type"
+}
+attr {
+name: "T"
+type: "type"
+}
+}
+
+op {
+name: "Max"
+input_arg{
+name: "input"
+type_attr: "T"
+}
+input_arg{
+name: "reduction_indices"
+type_attr: "Tidx"
+}
+output_arg{
+name: "output"
+type_attr: "T"
+}
+attr {
+name: "keep_dims"
+type: "bool"
+}
+attr {
+name: "Tidx"
+type: "type"
+}
+attr {
+name: "T"
+type: "type"
+}
+}
+
+op {
+name: "Sum"
+input_arg{
+name: "input"
+type_attr: "T"
+}
+input_arg{
+name: "reduction_indices"
+type_attr: "Tidx"
+}
+output_arg{
+name: "output"
+type_attr: "T"
+}
+attr {
+name: "keep_dims"
+type: "bool"
+}
+attr {
+name: "Tidx"
+type: "type"
+}
+attr {
+name: "T"
+type: "type"
+}
+}
+
+op {
+name: "SaveV2"
+input_arg{
+name: "prefix"
+type: DT_STRING
+}
+input_arg{
+name: "tensor_names"
+type: DT_STRING
+}
+input_arg{
+name: "shape_and_slices"
+type: DT_STRING
+}
+input_arg{
+name: "tensors"
+type_list_attr: "dtypes"
+}
+attr {
+name: "dtypes"
+type: "list(type)"
+}
+}
+
+op {
+name: "RestoreV2"
+input_arg{
+name: "prefix"
+type: DT_STRING
+}
+input_arg{
+name: "tensor_names"
+type: DT_STRING
+}
+input_arg{
+name: "shape_and_slices"
+type: DT_STRING
+}
+output_arg{
+name: "tensors"
+type_list_attr: "dtypes"
+}
+attr {
+name: "dtypes"
+type: "list(type)"
+}
+}
+
+op {
+name: "NoOp"
+}
+}
+tensorflow_version: "1.12.0"
+}
+graph_def {
+node {
+name: "owlnode59"
+op: "Div"
+input: "owlnode55"
+input: "owlnode57"
+attr {
+key: "T"
+value: {
+type: DT_FLOAT
+}
+}
+attr {
+key: "_output_shapes"
+value: {
+list {
+shape {
+dim {
+size: 100
+}
+dim {
+size: 10
+}
+}
+}
+}
+}
+}
+
+node {
+name: "owlnode55"
+op: "Exp"
+input: "owlnode53"
+attr {
+key: "T"
+value: {
+type: DT_FLOAT
+}
+}
+attr {
+key: "_output_shapes"
+value: {
+list {
+shape {
+dim {
+size: 100
+}
+dim {
+size: 10
+}
+}
+}
+}
+}
+}
+
+node {
+name: "owlnode53"
+op: "Sub"
+input: "owlnode50"
+input: "owlnode52"
+attr {
+key: "T"
+value: {
+type: DT_FLOAT
+}
+}
+attr {
+key: "_output_shapes"
+value: {
+list {
+shape {
+dim {
+size: 100
+}
+dim {
+size: 10
+}
+}
+}
+}
+}
+}
+
+node {
+name: "owlnode50"
+op: "Add"
+input: "owlnode48"
+input: "owlnode18/read"
+attr {
+key: "T"
+value: {
+type: DT_FLOAT
+}
+}
+attr {
+key: "_output_shapes"
+value: {
+list {
+shape {
+dim {
+size: 100
+}
+dim {
+size: 10
+}
+}
+}
+}
+}
+}
+
+node {
+name: "owlnode48"
+op: "MatMul"
+input: "owlnode44"
+input: "owlnode17/read"
+attr {
+key: "transpose_a"
+value: {
+b: false
+}
+}
+attr {
+key: "transpose_b"
+value: {
+b: false
+}
+}
+attr {
+key: "T"
+value: {
+type: DT_FLOAT
+}
+}
+attr {
+key: "_output_shapes"
+value: {
+list {
+shape {
+dim {
+size: 100
+}
+dim {
+size: 10
+}
+}
+}
+}
+}
+}
+
+node {
+name: "owlnode44"
+op: "Relu"
+input: "owlnode42"
+attr {
+key: "T"
+value: {
+type: DT_FLOAT
+}
+}
+attr {
+key: "_output_shapes"
+value: {
+list {
+shape {
+dim {
+size: 100
+}
+dim {
+size: 1024
+}
+}
+}
+}
+}
+}
+
+node {
+name: "owlnode42"
+op: "Add"
+input: "owlnode40"
+input: "owlnode14/read"
+attr {
+key: "T"
+value: {
+type: DT_FLOAT
+}
+}
+attr {
+key: "_output_shapes"
+value: {
+list {
+shape {
+dim {
+size: 100
+}
+dim {
+size: 1024
+}
+}
+}
+}
+}
+}
+
+node {
+name: "owlnode40"
+op: "MatMul"
+input: "owlnode36"
+input: "owlnode13/read"
+attr {
+key: "transpose_a"
+value: {
+b: false
+}
+}
+attr {
+key: "transpose_b"
+value: {
+b: false
+}
+}
+attr {
+key: "T"
+value: {
+type: DT_FLOAT
+}
+}
+attr {
+key: "_output_shapes"
+value: {
+list {
+shape {
+dim {
+size: 100
+}
+dim {
+size: 1024
+}
+}
+}
+}
+}
+}
+
+node {
+name: "owlnode36"
+op: "Reshape"
+input: "owlnode34"
+input: "owlnode36/shape"
+attr {
+key: "T"
+value: {
+type: DT_FLOAT
+}
+}
+attr {
+key: "Tshape"
+value: {
+type: DT_INT32
+}
+}
+attr {
+key: "_output_shapes"
+value: {
+list {
+shape {
+dim {
+size: 100
+}
+dim {
+size: 6272
+}
+}
+}
+}
+}
+}
+
+node {
+name: "owlnode36/shape"
+op: "Const"
+
+attr {
+key: "dtype"
+value: {
+type: DT_INT32
+}
+}
+attr {
+key: "_output_shapes"
+value: {
+list {
+shape {
+dim {
+size: 2
+}
+}
+}
+}
+}
+attr {
+key: "value"
+value: {
+tensor {
+dtype: DT_INT32
+tensor_shape:{
+dim {
+size: 2
+}
+}
+tensor_content: "d\x00\x00\x00\x80\x18\x00\x00"
+}
+}
+}
+}
+
+node {
+name: "owlnode34"
+op: "MaxPool"
+input: "owlnode32"
+attr {
+key: "strides"
+value: {
+list {
+i: 1
+i: 2
+i: 2
+i: 1
+}
+}
+}
+attr {
+key: "ksize"
+value: {
+list {
+i: 1
+i: 2
+i: 2
+i: 1
+}
+}
+}
+attr {
+key: "padding"
+value: {
+s: "SAME"
+}
+}
+attr {
+key: "T"
+value: {
+type: DT_FLOAT
+}
+}
+attr {
+key: "_output_shapes"
+value: {
+list {
+shape {
+dim {
+size: 100
+}
+dim {
+size: 14
+}
+dim {
+size: 14
+}
+dim {
+size: 32
+}
+}
+}
+}
+}
+}
+
+node {
+name: "owlnode32"
+op: "Relu"
+input: "owlnode30"
+attr {
+key: "T"
+value: {
+type: DT_FLOAT
+}
+}
+attr {
+key: "_output_shapes"
+value: {
+list {
+shape {
+dim {
+size: 100
+}
+dim {
+size: 28
+}
+dim {
+size: 28
+}
+dim {
+size: 32
+}
+}
+}
+}
+}
+}
+
+node {
+name: "owlnode30"
+op: "Add"
+input: "owlnode28"
+input: "owlnode10/read"
+attr {
+key: "T"
+value: {
+type: DT_FLOAT
+}
+}
+attr {
+key: "_output_shapes"
+value: {
+list {
+shape {
+dim {
+size: 100
+}
+dim {
+size: 28
+}
+dim {
+size: 28
+}
+dim {
+size: 32
+}
+}
+}
+}
+}
+}
+
+node {
+name: "owlnode28"
+op: "Conv2D"
+input: "owlnode27"
+input: "owlnode9/read"
+attr {
+key: "strides"
+value: {
+list {
+i: 1
+i: 1
+i: 1
+i: 1
+}
+}
+}
+attr {
+key: "dilations"
+value: {
+list {
+i: 1
+i: 1
+i: 1
+i: 1
+}
+}
+}
+attr {
+key: "padding"
+value: {
+s: "SAME"
+}
+}
+attr {
+key: "data_format"
+value: {
+s: "NHWC"
+}
+}
+attr {
+key: "T"
+value: {
+type: DT_FLOAT
+}
+}
+attr {
+key: "_output_shapes"
+value: {
+list {
+shape {
+dim {
+size: 100
+}
+dim {
+size: 28
+}
+dim {
+size: 28
+}
+dim {
+size: 32
+}
+}
+}
+}
+}
+}
+
+node {
+name: "owlnode27"
+op: "Div"
+input: "x"
+input: "owlnode26"
+attr {
+key: "T"
+value: {
+type: DT_FLOAT
+}
+}
+attr {
+key: "_output_shapes"
+value: {
+list {
+shape {
+dim {
+size: 100
+}
+dim {
+size: 28
+}
+dim {
+size: 28
+}
+dim {
+size: 1
+}
+}
+}
+}
+}
+}
+
+node {
+name: "x"
+op: "Placeholder"
+
+attr {
+key: "dtype"
+value: {
+type: DT_FLOAT
+}
+}
+attr {
+key: "shape"
+value: {
+shape {
+dim {
+size: 100
+}
+dim {
+size: 28
+}
+dim {
+size: 28
+}
+dim {
+size: 1
+}
+}
+}
+}
+attr {
+key: "_output_shapes"
+value: {
+list {
+shape {
+dim {
+size: 100
+}
+dim {
+size: 28
+}
+dim {
+size: 28
+}
+dim {
+size: 1
+}
+}
+}
+}
+}
+}
+
+node {
+name: "owlnode26"
+op: "Const"
+
+attr {
+key: "dtype"
+value: {
+type: DT_FLOAT
+}
+}
+attr {
+key: "_output_shapes"
+value: {
+list {
+shape {
+}
+}
+}
+}
+attr {
+key: "value"
+value: {
+tensor {
+dtype: DT_FLOAT
+tensor_shape:{
+}
+float_val: 256.000000
+}
+}
+}
+}
+
+node {
+name: "owlnode9/variable"
+op: "VariableV2"
+
+attr {
+key: "shape"
+value: {
+shape {
+dim {
+size: 5
+}
+dim {
+size: 5
+}
+dim {
+size: 1
+}
+dim {
+size: 32
+}
+}
+}
+}
+attr {
+key: "dtype"
+value: {
+type: DT_FLOAT
+}
+}
+attr {
+key: "_output_shapes"
+value: {
+list {
+shape {
+dim {
+size: 5
+}
+dim {
+size: 5
+}
+dim {
+size: 1
+}
+dim {
+size: 32
+}
+}
+}
+}
+}
+attr {
+key: "container"
+value: {
+s: ""
+}
+}
+attr {
+key: "shared_name"
+value: {
+s: ""
+}
+}
+}
+
+node {
+name: "owlnode9/read"
+op: "Identity"
+input: "owlnode9/variable"
+attr {
+key: "T"
+value: {
+type: DT_FLOAT
+}
+}
+attr {
+key: "_output_shapes"
+value: {
+list {
+shape {
+dim {
+size: 5
+}
+dim {
+size: 5
+}
+dim {
+size: 1
+}
+dim {
+size: 32
+}
+}
+}
+}
+}
+attr {
+key: "_class"
+value: {
+list {
+s: "loc:@owlnode9/variable"
+}
+}
+}
+}
+
+node {
+name: "owlnode9/assign"
+op: "Assign"
+input: "owlnode9/variable"
+input: "owlnode9/random_uniform/add"
+attr {
+key: "T"
+value: {
+type: DT_FLOAT
+}
+}
+attr {
+key: "_output_shapes"
+value: {
+list {
+shape {
+dim {
+size: 5
+}
+dim {
+size: 5
+}
+dim {
+size: 1
+}
+dim {
+size: 32
+}
+}
+}
+}
+}
+attr {
+key: "use_locking"
+value: {
+b: true
+}
+}
+attr {
+key: "validate_shape"
+value: {
+b: true
+}
+}
+}
+
+node {
+name: "owlnode9/random_uniform/add"
+op: "Add"
+input: "owlnode9/random_uniform/mul"
+input: "owlnode9/random_uniform/min"
+attr {
+key: "T"
+value: {
+type: DT_FLOAT
+}
+}
+attr {
+key: "_output_shapes"
+value: {
+list {
+shape {
+dim {
+size: 5
+}
+dim {
+size: 5
+}
+dim {
+size: 1
+}
+dim {
+size: 32
+}
+}
+}
+}
+}
+}
+
+node {
+name: "owlnode9/random_uniform/mul"
+op: "Mul"
+input: "owlnode9/random_uniform"
+input: "owlnode9/random_uniform/sub"
+attr {
+key: "T"
+value: {
+type: DT_FLOAT
+}
+}
+attr {
+key: "_output_shapes"
+value: {
+list {
+shape {
+dim {
+size: 5
+}
+dim {
+size: 5
+}
+dim {
+size: 1
+}
+dim {
+size: 32
+}
+}
+}
+}
+}
+}
+
+node {
+name: "owlnode9/random_uniform"
+op: "RandomUniform"
+input: "owlnode9/random_uniform/shape"
+attr {
+key: "T"
+value: {
+type: DT_INT32
+}
+}
+attr {
+key: "_output_shapes"
+value: {
+list {
+shape {
+dim {
+size: 5
+}
+dim {
+size: 5
+}
+dim {
+size: 1
+}
+dim {
+size: 32
+}
+}
+}
+}
+}
+attr {
+key: "dtype"
+value: {
+type: DT_FLOAT
+}
+}
+attr {
+key: "seed"
+value: {
+i: 0
+}
+}
+attr {
+key: "seed2"
+value: {
+i: 0
+}
+}
+}
+
+node {
+name: "owlnode9/random_uniform/shape"
+op: "Const"
+
+attr {
+key: "dtype"
+value: {
+type: DT_INT32
+}
+}
+attr {
+key: "_output_shapes"
+value: {
+list {
+shape {
+dim {
+size: 4
+}
+}
+}
+}
+}
+attr {
+key: "value"
+value: {
+tensor {
+dtype: DT_INT32
+tensor_shape:{
+dim {
+size: 4
+}
+}
+tensor_content: "\x05\x00\x00\x00\x05\x00\x00\x00\x01\x00\x00\x00 \x00\x00\x00"
+}
+}
+}
+}
+
+node {
+name: "owlnode9/random_uniform/sub"
+op: "Sub"
+input: "owlnode9/random_uniform/max"
+input: "owlnode9/random_uniform/min"
+attr {
+key: "T"
+value: {
+type: DT_FLOAT
+}
+}
+attr {
+key: "_output_shapes"
+value: {
+list {
+shape {
+}
+}
+}
+}
+}
+
+node {
+name: "owlnode9/random_uniform/max"
+op: "Const"
+
+attr {
+key: "dtype"
+value: {
+type: DT_FLOAT
+}
+}
+attr {
+key: "_output_shapes"
+value: {
+list {
+shape {
+}
+}
+}
+}
+attr {
+key: "value"
+value: {
+tensor {
+dtype: DT_FLOAT
+tensor_shape:{
+}
+float_val: 0.085280
+}
+}
+}
+}
+
+node {
+name: "owlnode9/random_uniform/min"
+op: "Const"
+
+attr {
+key: "dtype"
+value: {
+type: DT_FLOAT
+}
+}
+attr {
+key: "_output_shapes"
+value: {
+list {
+shape {
+}
+}
+}
+}
+attr {
+key: "value"
+value: {
+tensor {
+dtype: DT_FLOAT
+tensor_shape:{
+}
+float_val: -0.085280
+}
+}
+}
+}
+
+node {
+name: "owlnode8"
+op: "Const"
+
+attr {
+key: "dtype"
+value: {
+type: DT_FLOAT
+}
+}
+attr {
+key: "_output_shapes"
+value: {
+list {
+shape {
+}
+}
+}
+}
+attr {
+key: "value"
+value: {
+tensor {
+dtype: DT_FLOAT
+tensor_shape:{
+}
+float_val: -0.085280
+}
+}
+}
+}
+
+node {
+name: "owlnode7"
+op: "Const"
+
+attr {
+key: "dtype"
+value: {
+type: DT_FLOAT
+}
+}
+attr {
+key: "_output_shapes"
+value: {
+list {
+shape {
+}
+}
+}
+}
+attr {
+key: "value"
+value: {
+tensor {
+dtype: DT_FLOAT
+tensor_shape:{
+}
+float_val: 0.085280
+}
+}
+}
+}
+
+node {
+name: "owlnode10/variable"
+op: "VariableV2"
+
+attr {
+key: "shape"
+value: {
+shape {
+dim {
+size: 32
+}
+}
+}
+}
+attr {
+key: "dtype"
+value: {
+type: DT_FLOAT
+}
+}
+attr {
+key: "_output_shapes"
+value: {
+list {
+shape {
+dim {
+size: 32
+}
+}
+}
+}
+}
+attr {
+key: "container"
+value: {
+s: ""
+}
+}
+attr {
+key: "shared_name"
+value: {
+s: ""
+}
+}
+}
+
+node {
+name: "owlnode10/read"
+op: "Identity"
+input: "owlnode10/variable"
+attr {
+key: "T"
+value: {
+type: DT_FLOAT
+}
+}
+attr {
+key: "_output_shapes"
+value: {
+list {
+shape {
+dim {
+size: 32
+}
+}
+}
+}
+}
+attr {
+key: "_class"
+value: {
+list {
+s: "loc:@owlnode10/variable"
+}
+}
+}
+}
+
+node {
+name: "owlnode10/assign"
+op: "Assign"
+input: "owlnode10/variable"
+input: "owlnode10"
+attr {
+key: "T"
+value: {
+type: DT_FLOAT
+}
+}
+attr {
+key: "_output_shapes"
+value: {
+list {
+shape {
+dim {
+size: 32
+}
+}
+}
+}
+}
+attr {
+key: "use_locking"
+value: {
+b: true
+}
+}
+attr {
+key: "validate_shape"
+value: {
+b: true
+}
+}
+}
+
+node {
+name: "owlnode10"
+op: "Const"
+
+attr {
+key: "dtype"
+value: {
+type: DT_FLOAT
+}
+}
+attr {
+key: "_output_shapes"
+value: {
+list {
+shape {
+dim {
+size: 32
+}
+}
+}
+}
+}
+attr {
+key: "value"
+value: {
+tensor {
+dtype: DT_FLOAT
+tensor_shape:{
+dim {
+size: 32
+}
+}
+float_val: 0.000000
+}
+}
+}
+}
+
+node {
+name: "owlnode13/variable"
+op: "VariableV2"
+
+attr {
+key: "shape"
+value: {
+shape {
+dim {
+size: 6272
+}
+dim {
+size: 1024
+}
+}
+}
+}
+attr {
+key: "dtype"
+value: {
+type: DT_FLOAT
+}
+}
+attr {
+key: "_output_shapes"
+value: {
+list {
+shape {
+dim {
+size: 6272
+}
+dim {
+size: 1024
+}
+}
+}
+}
+}
+attr {
+key: "container"
+value: {
+s: ""
+}
+}
+attr {
+key: "shared_name"
+value: {
+s: ""
+}
+}
+}
+
+node {
+name: "owlnode13/read"
+op: "Identity"
+input: "owlnode13/variable"
+attr {
+key: "T"
+value: {
+type: DT_FLOAT
+}
+}
+attr {
+key: "_output_shapes"
+value: {
+list {
+shape {
+dim {
+size: 6272
+}
+dim {
+size: 1024
+}
+}
+}
+}
+}
+attr {
+key: "_class"
+value: {
+list {
+s: "loc:@owlnode13/variable"
+}
+}
+}
+}
+
+node {
+name: "owlnode13/assign"
+op: "Assign"
+input: "owlnode13/variable"
+input: "owlnode13/random_uniform/add"
+attr {
+key: "T"
+value: {
+type: DT_FLOAT
+}
+}
+attr {
+key: "_output_shapes"
+value: {
+list {
+shape {
+dim {
+size: 6272
+}
+dim {
+size: 1024
+}
+}
+}
+}
+}
+attr {
+key: "use_locking"
+value: {
+b: true
+}
+}
+attr {
+key: "validate_shape"
+value: {
+b: true
+}
+}
+}
+
+node {
+name: "owlnode13/random_uniform/add"
+op: "Add"
+input: "owlnode13/random_uniform/mul"
+input: "owlnode13/random_uniform/min"
+attr {
+key: "T"
+value: {
+type: DT_FLOAT
+}
+}
+attr {
+key: "_output_shapes"
+value: {
+list {
+shape {
+dim {
+size: 6272
+}
+dim {
+size: 1024
+}
+}
+}
+}
+}
+}
+
+node {
+name: "owlnode13/random_uniform/mul"
+op: "Mul"
+input: "owlnode13/random_uniform"
+input: "owlnode13/random_uniform/sub"
+attr {
+key: "T"
+value: {
+type: DT_FLOAT
+}
+}
+attr {
+key: "_output_shapes"
+value: {
+list {
+shape {
+dim {
+size: 6272
+}
+dim {
+size: 1024
+}
+}
+}
+}
+}
+}
+
+node {
+name: "owlnode13/random_uniform"
+op: "RandomUniform"
+input: "owlnode13/random_uniform/shape"
+attr {
+key: "T"
+value: {
+type: DT_INT32
+}
+}
+attr {
+key: "_output_shapes"
+value: {
+list {
+shape {
+dim {
+size: 6272
+}
+dim {
+size: 1024
+}
+}
+}
+}
+}
+attr {
+key: "dtype"
+value: {
+type: DT_FLOAT
+}
+}
+attr {
+key: "seed"
+value: {
+i: 0
+}
+}
+attr {
+key: "seed2"
+value: {
+i: 0
+}
+}
+}
+
+node {
+name: "owlnode13/random_uniform/shape"
+op: "Const"
+
+attr {
+key: "dtype"
+value: {
+type: DT_INT32
+}
+}
+attr {
+key: "_output_shapes"
+value: {
+list {
+shape {
+dim {
+size: 2
+}
+}
+}
+}
+}
+attr {
+key: "value"
+value: {
+tensor {
+dtype: DT_INT32
+tensor_shape:{
+dim {
+size: 2
+}
+}
+tensor_content: "\x80\x18\x00\x00\x00\x04\x00\x00"
+}
+}
+}
+}
+
+node {
+name: "owlnode13/random_uniform/sub"
+op: "Sub"
+input: "owlnode13/random_uniform/max"
+input: "owlnode13/random_uniform/min"
+attr {
+key: "T"
+value: {
+type: DT_FLOAT
+}
+}
+attr {
+key: "_output_shapes"
+value: {
+list {
+shape {
+}
+}
+}
+}
+}
+
+node {
+name: "owlnode13/random_uniform/max"
+op: "Const"
+
+attr {
+key: "dtype"
+value: {
+type: DT_FLOAT
+}
+}
+attr {
+key: "_output_shapes"
+value: {
+list {
+shape {
+}
+}
+}
+}
+attr {
+key: "value"
+value: {
+tensor {
+dtype: DT_FLOAT
+tensor_shape:{
+}
+float_val: 0.085280
+}
+}
+}
+}
+
+node {
+name: "owlnode13/random_uniform/min"
+op: "Const"
+
+attr {
+key: "dtype"
+value: {
+type: DT_FLOAT
+}
+}
+attr {
+key: "_output_shapes"
+value: {
+list {
+shape {
+}
+}
+}
+}
+attr {
+key: "value"
+value: {
+tensor {
+dtype: DT_FLOAT
+tensor_shape:{
+}
+float_val: -0.085280
+}
+}
+}
+}
+
+node {
+name: "owlnode12"
+op: "Const"
+
+attr {
+key: "dtype"
+value: {
+type: DT_FLOAT
+}
+}
+attr {
+key: "_output_shapes"
+value: {
+list {
+shape {
+}
+}
+}
+}
+attr {
+key: "value"
+value: {
+tensor {
+dtype: DT_FLOAT
+tensor_shape:{
+}
+float_val: -0.012627
+}
+}
+}
+}
+
+node {
+name: "owlnode11"
+op: "Const"
+
+attr {
+key: "dtype"
+value: {
+type: DT_FLOAT
+}
+}
+attr {
+key: "_output_shapes"
+value: {
+list {
+shape {
+}
+}
+}
+}
+attr {
+key: "value"
+value: {
+tensor {
+dtype: DT_FLOAT
+tensor_shape:{
+}
+float_val: 0.012627
+}
+}
+}
+}
+
+node {
+name: "owlnode14/variable"
+op: "VariableV2"
+
+attr {
+key: "shape"
+value: {
+shape {
+dim {
+size: 1
+}
+dim {
+size: 1024
+}
+}
+}
+}
+attr {
+key: "dtype"
+value: {
+type: DT_FLOAT
+}
+}
+attr {
+key: "_output_shapes"
+value: {
+list {
+shape {
+dim {
+size: 1
+}
+dim {
+size: 1024
+}
+}
+}
+}
+}
+attr {
+key: "container"
+value: {
+s: ""
+}
+}
+attr {
+key: "shared_name"
+value: {
+s: ""
+}
+}
+}
+
+node {
+name: "owlnode14/read"
+op: "Identity"
+input: "owlnode14/variable"
+attr {
+key: "T"
+value: {
+type: DT_FLOAT
+}
+}
+attr {
+key: "_output_shapes"
+value: {
+list {
+shape {
+dim {
+size: 1
+}
+dim {
+size: 1024
+}
+}
+}
+}
+}
+attr {
+key: "_class"
+value: {
+list {
+s: "loc:@owlnode14/variable"
+}
+}
+}
+}
+
+node {
+name: "owlnode14/assign"
+op: "Assign"
+input: "owlnode14/variable"
+input: "owlnode14"
+attr {
+key: "T"
+value: {
+type: DT_FLOAT
+}
+}
+attr {
+key: "_output_shapes"
+value: {
+list {
+shape {
+dim {
+size: 1
+}
+dim {
+size: 1024
+}
+}
+}
+}
+}
+attr {
+key: "use_locking"
+value: {
+b: true
+}
+}
+attr {
+key: "validate_shape"
+value: {
+b: true
+}
+}
+}
+
+node {
+name: "owlnode14"
+op: "Const"
+
+attr {
+key: "dtype"
+value: {
+type: DT_FLOAT
+}
+}
+attr {
+key: "_output_shapes"
+value: {
+list {
+shape {
+dim {
+size: 1
+}
+dim {
+size: 1024
+}
+}
+}
+}
+}
+attr {
+key: "value"
+value: {
+tensor {
+dtype: DT_FLOAT
+tensor_shape:{
+dim {
+size: 1
+}
+dim {
+size: 1024
+}
+}
+float_val: 0.000000
+}
+}
+}
+}
+
+node {
+name: "owlnode17/variable"
+op: "VariableV2"
+
+attr {
+key: "shape"
+value: {
+shape {
+dim {
+size: 1024
+}
+dim {
+size: 10
+}
+}
+}
+}
+attr {
+key: "dtype"
+value: {
+type: DT_FLOAT
+}
+}
+attr {
+key: "_output_shapes"
+value: {
+list {
+shape {
+dim {
+size: 1024
+}
+dim {
+size: 10
+}
+}
+}
+}
+}
+attr {
+key: "container"
+value: {
+s: ""
+}
+}
+attr {
+key: "shared_name"
+value: {
+s: ""
+}
+}
+}
+
+node {
+name: "owlnode17/read"
+op: "Identity"
+input: "owlnode17/variable"
+attr {
+key: "T"
+value: {
+type: DT_FLOAT
+}
+}
+attr {
+key: "_output_shapes"
+value: {
+list {
+shape {
+dim {
+size: 1024
+}
+dim {
+size: 10
+}
+}
+}
+}
+}
+attr {
+key: "_class"
+value: {
+list {
+s: "loc:@owlnode17/variable"
+}
+}
+}
+}
+
+node {
+name: "owlnode17/assign"
+op: "Assign"
+input: "owlnode17/variable"
+input: "owlnode17/random_uniform/add"
+attr {
+key: "T"
+value: {
+type: DT_FLOAT
+}
+}
+attr {
+key: "_output_shapes"
+value: {
+list {
+shape {
+dim {
+size: 1024
+}
+dim {
+size: 10
+}
+}
+}
+}
+}
+attr {
+key: "use_locking"
+value: {
+b: true
+}
+}
+attr {
+key: "validate_shape"
+value: {
+b: true
+}
+}
+}
+
+node {
+name: "owlnode17/random_uniform/add"
+op: "Add"
+input: "owlnode17/random_uniform/mul"
+input: "owlnode17/random_uniform/min"
+attr {
+key: "T"
+value: {
+type: DT_FLOAT
+}
+}
+attr {
+key: "_output_shapes"
+value: {
+list {
+shape {
+dim {
+size: 1024
+}
+dim {
+size: 10
+}
+}
+}
+}
+}
+}
+
+node {
+name: "owlnode17/random_uniform/mul"
+op: "Mul"
+input: "owlnode17/random_uniform"
+input: "owlnode17/random_uniform/sub"
+attr {
+key: "T"
+value: {
+type: DT_FLOAT
+}
+}
+attr {
+key: "_output_shapes"
+value: {
+list {
+shape {
+dim {
+size: 1024
+}
+dim {
+size: 10
+}
+}
+}
+}
+}
+}
+
+node {
+name: "owlnode17/random_uniform"
+op: "RandomUniform"
+input: "owlnode17/random_uniform/shape"
+attr {
+key: "T"
+value: {
+type: DT_INT32
+}
+}
+attr {
+key: "_output_shapes"
+value: {
+list {
+shape {
+dim {
+size: 1024
+}
+dim {
+size: 10
+}
+}
+}
+}
+}
+attr {
+key: "dtype"
+value: {
+type: DT_FLOAT
+}
+}
+attr {
+key: "seed"
+value: {
+i: 0
+}
+}
+attr {
+key: "seed2"
+value: {
+i: 0
+}
+}
+}
+
+node {
+name: "owlnode17/random_uniform/shape"
+op: "Const"
+
+attr {
+key: "dtype"
+value: {
+type: DT_INT32
+}
+}
+attr {
+key: "_output_shapes"
+value: {
+list {
+shape {
+dim {
+size: 2
+}
+}
+}
+}
+}
+attr {
+key: "value"
+value: {
+tensor {
+dtype: DT_INT32
+tensor_shape:{
+dim {
+size: 2
+}
+}
+tensor_content: "\x00\x04\x00\x00\n\x00\x00\x00"
+}
+}
+}
+}
+
+node {
+name: "owlnode17/random_uniform/sub"
+op: "Sub"
+input: "owlnode17/random_uniform/max"
+input: "owlnode17/random_uniform/min"
+attr {
+key: "T"
+value: {
+type: DT_FLOAT
+}
+}
+attr {
+key: "_output_shapes"
+value: {
+list {
+shape {
+}
+}
+}
+}
+}
+
+node {
+name: "owlnode17/random_uniform/max"
+op: "Const"
+
+attr {
+key: "dtype"
+value: {
+type: DT_FLOAT
+}
+}
+attr {
+key: "_output_shapes"
+value: {
+list {
+shape {
+}
+}
+}
+}
+attr {
+key: "value"
+value: {
+tensor {
+dtype: DT_FLOAT
+tensor_shape:{
+}
+float_val: 0.085280
+}
+}
+}
+}
+
+node {
+name: "owlnode17/random_uniform/min"
+op: "Const"
+
+attr {
+key: "dtype"
+value: {
+type: DT_FLOAT
+}
+}
+attr {
+key: "_output_shapes"
+value: {
+list {
+shape {
+}
+}
+}
+}
+attr {
+key: "value"
+value: {
+tensor {
+dtype: DT_FLOAT
+tensor_shape:{
+}
+float_val: -0.085280
+}
+}
+}
+}
+
+node {
+name: "owlnode16"
+op: "Const"
+
+attr {
+key: "dtype"
+value: {
+type: DT_FLOAT
+}
+}
+attr {
+key: "_output_shapes"
+value: {
+list {
+shape {
+}
+}
+}
+}
+attr {
+key: "value"
+value: {
+tensor {
+dtype: DT_FLOAT
+tensor_shape:{
+}
+float_val: -0.031250
+}
+}
+}
+}
+
+node {
+name: "owlnode15"
+op: "Const"
+
+attr {
+key: "dtype"
+value: {
+type: DT_FLOAT
+}
+}
+attr {
+key: "_output_shapes"
+value: {
+list {
+shape {
+}
+}
+}
+}
+attr {
+key: "value"
+value: {
+tensor {
+dtype: DT_FLOAT
+tensor_shape:{
+}
+float_val: 0.031250
+}
+}
+}
+}
+
+node {
+name: "owlnode18/variable"
+op: "VariableV2"
+
+attr {
+key: "shape"
+value: {
+shape {
+dim {
+size: 1
+}
+dim {
+size: 10
+}
+}
+}
+}
+attr {
+key: "dtype"
+value: {
+type: DT_FLOAT
+}
+}
+attr {
+key: "_output_shapes"
+value: {
+list {
+shape {
+dim {
+size: 1
+}
+dim {
+size: 10
+}
+}
+}
+}
+}
+attr {
+key: "container"
+value: {
+s: ""
+}
+}
+attr {
+key: "shared_name"
+value: {
+s: ""
+}
+}
+}
+
+node {
+name: "owlnode18/read"
+op: "Identity"
+input: "owlnode18/variable"
+attr {
+key: "T"
+value: {
+type: DT_FLOAT
+}
+}
+attr {
+key: "_output_shapes"
+value: {
+list {
+shape {
+dim {
+size: 1
+}
+dim {
+size: 10
+}
+}
+}
+}
+}
+attr {
+key: "_class"
+value: {
+list {
+s: "loc:@owlnode18/variable"
+}
+}
+}
+}
+
+node {
+name: "owlnode18/assign"
+op: "Assign"
+input: "owlnode18/variable"
+input: "owlnode18"
+attr {
+key: "T"
+value: {
+type: DT_FLOAT
+}
+}
+attr {
+key: "_output_shapes"
+value: {
+list {
+shape {
+dim {
+size: 1
+}
+dim {
+size: 10
+}
+}
+}
+}
+}
+attr {
+key: "use_locking"
+value: {
+b: true
+}
+}
+attr {
+key: "validate_shape"
+value: {
+b: true
+}
+}
+}
+
+node {
+name: "owlnode18"
+op: "Const"
+
+attr {
+key: "dtype"
+value: {
+type: DT_FLOAT
+}
+}
+attr {
+key: "_output_shapes"
+value: {
+list {
+shape {
+dim {
+size: 1
+}
+dim {
+size: 10
+}
+}
+}
+}
+}
+attr {
+key: "value"
+value: {
+tensor {
+dtype: DT_FLOAT
+tensor_shape:{
+dim {
+size: 1
+}
+dim {
+size: 10
+}
+}
+float_val: 0.000000
+}
+}
+}
+}
+
+node {
+name: "owlnode52"
+op: "Max"
+input: "owlnode50"
+input: "owlnode52/reduction_indices"
+attr {
+key: "T"
+value: {
+type: DT_FLOAT
+}
+}
+attr {
+key: "Tidx"
+value: {
+type: DT_INT32
+}
+}
+attr {
+key: "keep_dims"
+value: {
+b: true
+}
+}
+attr {
+key: "_output_shapes"
+value: {
+list {
+shape {
+dim {
+size: 100
+}
+dim {
+size: 1
+}
+}
+}
+}
+}
+}
+
+node {
+name: "owlnode52/reduction_indices"
+op: "Const"
+
+attr {
+key: "dtype"
+value: {
+type: DT_INT32
+}
+}
+attr {
+key: "_output_shapes"
+value: {
+list {
+shape {
+}
+}
+}
+}
+attr {
+key: "value"
+value: {
+tensor {
+dtype: DT_INT32
+tensor_shape:{
+}
+int_val: 1
+}
+}
+}
+}
+
+node {
+name: "owlnode57"
+op: "Sum"
+input: "owlnode55"
+input: "owlnode57/reduction_indices"
+attr {
+key: "T"
+value: {
+type: DT_FLOAT
+}
+}
+attr {
+key: "Tidx"
+value: {
+type: DT_INT32
+}
+}
+attr {
+key: "keep_dims"
+value: {
+b: true
+}
+}
+attr {
+key: "_output_shapes"
+value: {
+list {
+shape {
+dim {
+size: 100
+}
+dim {
+size: 1
+}
+}
+}
+}
+}
+}
+
+node {
+name: "owlnode57/reduction_indices"
+op: "Const"
+
+attr {
+key: "dtype"
+value: {
+type: DT_INT32
+}
+}
+attr {
+key: "_output_shapes"
+value: {
+list {
+shape {
+}
+}
+}
+}
+attr {
+key: "value"
+value: {
+tensor {
+dtype: DT_INT32
+tensor_shape:{
+}
+int_val: 1
+}
+}
+}
+}
+
+node {
+name: "save/Const"
+op: "Const"
+
+attr {
+key: "dtype"
+value: {
+type: DT_STRING
+}
+}
+attr {
+key: "_output_shapes"
+value: {
+list {
+shape {
+}
+}
+}
+}
+attr {
+key: "value"
+value: {
+tensor {
+dtype: DT_STRING
+tensor_shape:{
+}
+string_val: "owl_model"
+}
+}
+}
+}
+
+node {
+name: "save/SaveV2/tensor_names"
+op: "Const"
+
+attr {
+key: "dtype"
+value: {
+type: DT_STRING
+}
+}
+attr {
+key: "_output_shapes"
+value: {
+list {
+shape {
+dim {
+size: 6
+}
+}
+}
+}
+}
+attr {
+key: "value"
+value: {
+tensor {
+dtype: DT_STRING
+tensor_shape:{
+dim {
+size: 6
+}
+}
+string_val: "owlnode9/variable"
+string_val: "owlnode10/variable"
+string_val: "owlnode13/variable"
+string_val: "owlnode14/variable"
+string_val: "owlnode17/variable"
+string_val: "owlnode18/variable"
+}
+}
+}
+}
+
+node {
+name: "save/SaveV2/shape_and_slices"
+op: "Const"
+
+attr {
+key: "dtype"
+value: {
+type: DT_STRING
+}
+}
+attr {
+key: "_output_shapes"
+value: {
+list {
+shape {
+dim {
+size: 6
+}
+}
+}
+}
+}
+attr {
+key: "value"
+value: {
+tensor {
+dtype: DT_STRING
+tensor_shape:{
+dim {
+size: 6
+}
+}
+string_val: ""
+string_val: ""
+string_val: ""
+string_val: ""
+string_val: ""
+string_val: ""
+}
+}
+}
+}
+
+node {
+name: "save/SaveV2"
+op: "SaveV2"
+input: "save/Const"
+input: "save/SaveV2/tensor_names"
+input: "save/SaveV2/shape_and_slices"
+input: "owlnode9/variable"
+input: "owlnode10/variable"
+input: "owlnode13/variable"
+input: "owlnode14/variable"
+input: "owlnode17/variable"
+input: "owlnode18/variable"
+attr {
+key: "dtypes"
+value: {
+list {
+type: DT_FLOAT
+type: DT_FLOAT
+type: DT_FLOAT
+type: DT_FLOAT
+type: DT_FLOAT
+type: DT_FLOAT
+}
+}
+}
+}
+
+node {
+name: "save/control_dependency"
+op: "Identity"
+input: "save/Const"
+input: "^save/SaveV2"
+attr {
+key: "T"
+value: {
+type: DT_STRING
+}
+}
+attr {
+key: "_output_shapes"
+value: {
+list {
+shape {
+}
+}
+}
+}
+attr {
+key: "_class"
+value: {
+list {
+s: "loc:@save/Const"
+}
+}
+}
+}
+
+node {
+name: "save/RestoreV2/tensor_names"
+op: "Const"
+
+attr {
+key: "dtype"
+value: {
+type: DT_STRING
+}
+}
+attr {
+key: "_output_shapes"
+value: {
+list {
+shape {
+dim {
+size: 6
+}
+}
+}
+}
+}
+attr {
+key: "value"
+value: {
+tensor {
+dtype: DT_STRING
+tensor_shape:{
+dim {
+size: 6
+}
+}
+string_val: "owlnode9/variable"
+string_val: "owlnode10/variable"
+string_val: "owlnode13/variable"
+string_val: "owlnode14/variable"
+string_val: "owlnode17/variable"
+string_val: "owlnode18/variable"
+}
+}
+}
+}
+
+node {
+name: "save/RestoreV2/shape_and_slices"
+op: "Const"
+
+attr {
+key: "dtype"
+value: {
+type: DT_STRING
+}
+}
+attr {
+key: "_output_shapes"
+value: {
+list {
+shape {
+dim {
+size: 6
+}
+}
+}
+}
+}
+attr {
+key: "value"
+value: {
+tensor {
+dtype: DT_STRING
+tensor_shape:{
+dim {
+size: 6
+}
+}
+string_val: ""
+string_val: ""
+string_val: ""
+string_val: ""
+string_val: ""
+string_val: ""
+}
+}
+}
+}
+
+node {
+name: "save/RestoreV2"
+op: "RestoreV2"
+input: "save/Const"
+input: "save/RestoreV2/tensor_names"
+input: "save/RestoreV2/shape_and_slices"
+attr {
+key: "dtypes"
+value: {
+list {
+type: DT_FLOAT
+type: DT_FLOAT
+type: DT_FLOAT
+type: DT_FLOAT
+type: DT_FLOAT
+type: DT_FLOAT
+}
+}
+}
+}
+
+node {
+name: "save/restore_all"
+op: "NoOp"
+input: "^save/Assign_0"
+input: "^save/Assign_1"
+input: "^save/Assign_2"
+input: "^save/Assign_3"
+input: "^save/Assign_4"
+input: "^save/Assign_5"
+}
+
+node {
+name: "save/Assign_0"
+op: "Assign"
+input: "owlnode9/variable"
+input: "save/RestoreV2:0"
+attr {
+key: "T"
+value: {
+type: DT_FLOAT
+}
+}
+attr {
+key: "_output_shapes"
+value: {
+list {
+shape {
+dim {
+size: 5
+}
+dim {
+size: 5
+}
+dim {
+size: 1
+}
+dim {
+size: 32
+}
+}
+}
+}
+}
+attr {
+key: "use_locking"
+value: {
+b: true
+}
+}
+attr {
+key: "validate_shape"
+value: {
+b: true
+}
+}
+}
+
+node {
+name: "save/Assign_1"
+op: "Assign"
+input: "owlnode10/variable"
+input: "save/RestoreV2:1"
+attr {
+key: "T"
+value: {
+type: DT_FLOAT
+}
+}
+attr {
+key: "_output_shapes"
+value: {
+list {
+shape {
+dim {
+size: 32
+}
+}
+}
+}
+}
+attr {
+key: "use_locking"
+value: {
+b: true
+}
+}
+attr {
+key: "validate_shape"
+value: {
+b: true
+}
+}
+}
+
+node {
+name: "save/Assign_2"
+op: "Assign"
+input: "owlnode13/variable"
+input: "save/RestoreV2:2"
+attr {
+key: "T"
+value: {
+type: DT_FLOAT
+}
+}
+attr {
+key: "_output_shapes"
+value: {
+list {
+shape {
+dim {
+size: 6272
+}
+dim {
+size: 1024
+}
+}
+}
+}
+}
+attr {
+key: "use_locking"
+value: {
+b: true
+}
+}
+attr {
+key: "validate_shape"
+value: {
+b: true
+}
+}
+}
+
+node {
+name: "save/Assign_3"
+op: "Assign"
+input: "owlnode14/variable"
+input: "save/RestoreV2:3"
+attr {
+key: "T"
+value: {
+type: DT_FLOAT
+}
+}
+attr {
+key: "_output_shapes"
+value: {
+list {
+shape {
+dim {
+size: 1
+}
+dim {
+size: 1024
+}
+}
+}
+}
+}
+attr {
+key: "use_locking"
+value: {
+b: true
+}
+}
+attr {
+key: "validate_shape"
+value: {
+b: true
+}
+}
+}
+
+node {
+name: "save/Assign_4"
+op: "Assign"
+input: "owlnode17/variable"
+input: "save/RestoreV2:4"
+attr {
+key: "T"
+value: {
+type: DT_FLOAT
+}
+}
+attr {
+key: "_output_shapes"
+value: {
+list {
+shape {
+dim {
+size: 1024
+}
+dim {
+size: 10
+}
+}
+}
+}
+}
+attr {
+key: "use_locking"
+value: {
+b: true
+}
+}
+attr {
+key: "validate_shape"
+value: {
+b: true
+}
+}
+}
+
+node {
+name: "save/Assign_5"
+op: "Assign"
+input: "owlnode18/variable"
+input: "save/RestoreV2:5"
+attr {
+key: "T"
+value: {
+type: DT_FLOAT
+}
+}
+attr {
+key: "_output_shapes"
+value: {
+list {
+shape {
+dim {
+size: 1
+}
+dim {
+size: 10
+}
+}
+}
+}
+}
+attr {
+key: "use_locking"
+value: {
+b: true
+}
+}
+attr {
+key: "validate_shape"
+value: {
+b: true
+}
+}
+}
+versions {
+producer: 27
+}
+}
+saver_def {
+filename_tensor_name : "save/Const:0"
+save_tensor_name : "save/control_dependency:0"
+restore_op_name : "save/restore_all"
+max_to_keep : 5
+sharded: false
+keep_checkpoint_every_n_hours: 10000.000000
+version: V2
+}
+collection_def {
+key: "trainable_variables"
+value {
+bytes_list {
+value: "\n\x13owlnode9/variable:0\x12\x0fowlnode9/assign\x1a\x0fowlnode9/read:02\x1dowlnode9/random_uniform/add:08\x01"
+value: "\n\x14owlnode10/variable:0\x12\x10owlnode10/assign\x1a\x10owlnode10/read:02\x0bowlnode10:08\x01"
+value: "\n\x14owlnode13/variable:0\x12\x10owlnode13/assign\x1a\x10owlnode13/read:02\x1eowlnode13/random_uniform/add:08\x01"
+value: "\n\x14owlnode14/variable:0\x12\x10owlnode14/assign\x1a\x10owlnode14/read:02\x0bowlnode14:08\x01"
+value: "\n\x14owlnode17/variable:0\x12\x10owlnode17/assign\x1a\x10owlnode17/read:02\x1eowlnode17/random_uniform/add:08\x01"
+value: "\n\x14owlnode18/variable:0\x12\x10owlnode18/assign\x1a\x10owlnode18/read:02\x0bowlnode18:08\x01"
+}
+}
+}
+collection_def {
+key: "result"
+value {
+node_list {value: "owlnode59:0"
+}
+}
+}
+collection_def {
+key: "variables"
+value {
+bytes_list {
+value: "\n\x13owlnode9/variable:0\x12\x0fowlnode9/assign\x1a\x0fowlnode9/read:02\x1dowlnode9/random_uniform/add:08\x01"
+value: "\n\x14owlnode10/variable:0\x12\x10owlnode10/assign\x1a\x10owlnode10/read:02\x0bowlnode10:08\x01"
+value: "\n\x14owlnode13/variable:0\x12\x10owlnode13/assign\x1a\x10owlnode13/read:02\x1eowlnode13/random_uniform/add:08\x01"
+value: "\n\x14owlnode14/variable:0\x12\x10owlnode14/assign\x1a\x10owlnode14/read:02\x0bowlnode14:08\x01"
+value: "\n\x14owlnode17/variable:0\x12\x10owlnode17/assign\x1a\x10owlnode17/read:02\x1eowlnode17/random_uniform/add:08\x01"
+value: "\n\x14owlnode18/variable:0\x12\x10owlnode18/assign\x1a\x10owlnode18/read:02\x0bowlnode18:08\x01"
+}
+}
+}
