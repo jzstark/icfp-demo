@@ -8,7 +8,6 @@ open CGCompiler.Neural
 open CGCompiler.Neural.Graph
 open CGCompiler.Neural.Algodiff
 
-
 let make_network input_shape =
   input input_shape
   |> lambda (fun x -> Maths.(x / pack_flt 256.))
@@ -27,8 +26,12 @@ let y' = Graph.forward network x |> fst
 let loss = Maths.cross_entropy y y' 
 let z = Graph.backward network loss |> fst
 
-let input = [| unpack_arr y |> G.arr_to_node |]
-let output = Array.map (fun a -> unpack_arr a |> G.arr_to_node) z.(5)
+let input = [| unpack_arr y |> G.arr_to_node; unpack_arr x |> G.arr_to_node|]
+let output = Array.map (fun a -> 
+  let b = unpack_arr a in
+  G.eval_arr [|b|];
+  G.arr_to_node b
+) [|z.(2).(0)|]
 let cgraph = G.make_graph ~input ~output "graph_diff"
 
 (*

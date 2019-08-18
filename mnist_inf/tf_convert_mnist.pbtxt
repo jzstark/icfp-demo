@@ -3320,19 +3320,19 @@ type: DT_FLOAT
 node {
 name: "save/restore_all"
 op: "NoOp"
-input: "^owlnode9/variable/Assign_0"
-input: "^owlnode10/variable/Assign_1"
-input: "^owlnode13/variable/Assign_2"
-input: "^owlnode14/variable/Assign_3"
-input: "^owlnode17/variable/Assign_4"
-input: "^owlnode18/variable/Assign_5"
+input: "^save/Assign_0"
+input: "^save/Assign_1"
+input: "^save/Assign_2"
+input: "^save/Assign_3"
+input: "^save/Assign_4"
+input: "^save/Assign_5"
 }
 
 node {
-name: "owlnode9/variable/Assign_0"
+name: "save/Assign_0"
 op: "Assign"
 input: "owlnode9/variable"
-input: "save/RestoreV2"
+input: "save/RestoreV2:0"
 attr {
 key: "T"
 value: {
@@ -3375,10 +3375,10 @@ b: true
 }
 
 node {
-name: "owlnode10/variable/Assign_1"
+name: "save/Assign_1"
 op: "Assign"
 input: "owlnode10/variable"
-input: "save/RestoreV2"
+input: "save/RestoreV2:1"
 attr {
 key: "T"
 value: {
@@ -3412,10 +3412,10 @@ b: true
 }
 
 node {
-name: "owlnode13/variable/Assign_2"
+name: "save/Assign_2"
 op: "Assign"
 input: "owlnode13/variable"
-input: "save/RestoreV2"
+input: "save/RestoreV2:2"
 attr {
 key: "T"
 value: {
@@ -3452,10 +3452,10 @@ b: true
 }
 
 node {
-name: "owlnode14/variable/Assign_3"
+name: "save/Assign_3"
 op: "Assign"
 input: "owlnode14/variable"
-input: "save/RestoreV2"
+input: "save/RestoreV2:3"
 attr {
 key: "T"
 value: {
@@ -3492,10 +3492,10 @@ b: true
 }
 
 node {
-name: "owlnode17/variable/Assign_4"
+name: "save/Assign_4"
 op: "Assign"
 input: "owlnode17/variable"
-input: "save/RestoreV2"
+input: "save/RestoreV2:4"
 attr {
 key: "T"
 value: {
@@ -3532,10 +3532,10 @@ b: true
 }
 
 node {
-name: "owlnode18/variable/Assign_5"
+name: "save/Assign_5"
 op: "Assign"
 input: "owlnode18/variable"
-input: "save/RestoreV2"
+input: "save/RestoreV2:5"
 attr {
 key: "T"
 value: {
@@ -3575,8 +3575,8 @@ producer: 27
 }
 }
 saver_def {
-filename_tensor_name : "save/Const"
-save_tensor_name : "save/control_dependency"
+filename_tensor_name : "save/Const:0"
+save_tensor_name : "save/control_dependency:0"
 restore_op_name : "save/restore_all"
 max_to_keep : 5
 sharded: false
