@@ -36,26 +36,28 @@ with tf.Graph().as_default():
     y = tf.compat.v1.placeholder("float", [None, 10])
     result = tf.compat.v1.get_collection("result")[0]
 
+    correct_pred = tf.equal(tf.argmax(result, 1), tf.argmax(y, 1))
+    accuracy = tf.reduce_mean(tf.cast(correct_pred, tf.float32))
+
+    # Extra tensors for training
     cross_entropy = tf.reduce_mean(
         tf.nn.softmax_cross_entropy_with_logits_v2(
         labels=y, logits=result
     ))
     train_step = tf.train.AdamOptimizer(1e-4).minimize(cross_entropy)
 
-    correct_pred = tf.equal(tf.argmax(result, 1), tf.argmax(y, 1))
-    accuracy = tf.reduce_mean(tf.cast(correct_pred, tf.float32))
-
     init = tf.global_variables_initializer()
     sess.run(init)
 
-    for i in range(4000):
+    # Begin training
+    for i in range(500):
         batch_x, batch_y = mnist.train.next_batch(batch_size)
         batch_x = np.reshape(batch_x, (-1,28,28,1))
         sess.run(train_step, feed_dict={x: batch_x, y: batch_y})
     
         if (i % 100 == 0):
             minibatch_loss, acc = sess.run([cross_entropy, accuracy], feed_dict={x: batch_x, y: batch_y})
-            print("Loss:%s\n" % str(minibatch_loss))
+            print("Loss:%s" % str(minibatch_loss))
             print("Accuracy:%s\n" % str(acc))
 
     # saver.save(sess, "owl_model.ckpt")

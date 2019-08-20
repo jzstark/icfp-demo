@@ -36,7 +36,6 @@ let input  = [| unpack_arr x |> G.arr_to_node |]
 let cgraph = G.make_graph ~input ~output "graph_diff"
 
 let s = G.graph_to_dot cgraph
-let _ = Owl_io.write_file "mnist.dot" s
 
 let pbtxt = T.(convert cgraph |> to_pbtxt)
 let _ = Owl_io.write_file "tf_convert_mnist.pbtxt" pbtxt

@@ -30,23 +30,26 @@ with tf.Graph().as_default():
     # Session configuration 
     config = tf.compat.v1.ConfigProto()
     config.gpu_options.allow_growth = True
-
-    # Start session and import graph from pb file
     sess = tf.compat.v1.Session(config=config)
+
+    # Import graph from pb file
     saver = tf.compat.v1.train.import_meta_graph(filename+'.pb')
     graph = tf.compat.v1.get_default_graph()
     
     # Load pre-trained variables
     saver.restore(sess, "owl_model.ckpt")
 
+    # Get input and output from computation grpah 
     x = graph.get_tensor_by_name('x:0')
-    y = tf.compat.v1.placeholder("float", [None, 10])
     result = tf.compat.v1.get_collection("result")[0]
 
+    # Create extra placeholder and tensors
+    y = tf.compat.v1.placeholder("float", [None, 10])
     y_data = tf.compat.v1.placeholder("float", [None, 10])
     pred = tf.equal(tf.argmax(result, 1), tf.argmax(y_data, 1))
     accu = tf.reduce_mean(tf.cast(pred, tf.float32))
 
+    # Execute
     predict, accuracy = sess.run([pred, accu], feed_dict={x:batch_x, y_data:batch_y})
     print("\n\nPrediction:\n", predict)
     print("\nTest accuracy is: %.2f%%" % (accuracy * 100))
