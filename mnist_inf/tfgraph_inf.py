@@ -44,7 +44,6 @@ with tf.Graph().as_default():
     result = tf.compat.v1.get_collection("result")[0]
 
     # Create extra placeholder and tensors
-    y = tf.compat.v1.placeholder("float", [None, 10])
     y_data = tf.compat.v1.placeholder("float", [None, 10])
     pred = tf.equal(tf.argmax(result, 1), tf.argmax(y_data, 1))
     accu = tf.reduce_mean(tf.cast(pred, tf.float32))
